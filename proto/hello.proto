@@ -1,0 +1,31 @@
+syntax = "proto3";
+package protoSamples;
+
+option go_package = "github.com/MathPoem/mineProto/protoSamples";
+
+message Sample {
+  string id = 1;
+  string name = 2;
+  int32 status = 3;
+}
+
+message SampleResponseAll {
+  repeated Sample sample = 1;
+}
+
+message SampleResponseByID {
+  Sample sample = 1;
+}
+
+message SampleRequestAll {
+
+}
+
+message SampleRequestByID {
+  string id = 1;
+}
+
+service SampleService {
+  rpc GetSampleID (SampleRequestAll) returns (SampleResponseAll) {}
+  rpc GetSampleByID (SampleRequestByID) returns (SampleResponseByID) {}
+}
